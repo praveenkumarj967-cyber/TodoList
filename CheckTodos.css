@@ -1,0 +1,22 @@
+.background{
+    background-image: url("http://media.istockphoto.com/id/2181870239/photo/check-mark-on-list-check-list-in-business.jpg?s=1024x1024&w=is&k=20&c=38M9j-R-pvNZ_eYwJGxFNttvsRpaoCu_NzkdZg4Wli4=");
+    height:100vh;
+    width:100vw;
+    background-size:cover;
+}
+
+.label{
+    color:rgb(255, 196, 201);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+}
+
+
+.label1{
+    background-color:rgb(241, 240, 255);
+    border-radius: 5px;
+}
+
+.listItem{
+    list-style-type: none;
+}

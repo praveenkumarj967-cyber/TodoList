@@ -1,0 +1,18 @@
+.background{
+    width:100vw;
+    height:100vh;
+    background-image: url("https://i.ibb.co/rfHSKKg7/Pngtree-completed-to-do-list-icon-13281083.jpg");
+    background-size: cover;
+    text-align: center;
+}
+
+.heading{
+    font-family: "Caveat";
+    position:fixed;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: 800;
+    color:antiquewhite;
+    text-align: center;
+}
