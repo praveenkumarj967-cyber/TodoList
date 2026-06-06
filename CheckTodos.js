@@ -4,6 +4,7 @@ let unorderedList=document.getElementById("unorderedList");
 let count=1;
 function Listing(todo,count)
 {
+    let listDiv=document.createElement("div");
     let ListItem=document.createElement("li");
     ListItem.id="todo"+todo.uniqueNo;
     let lableElement=document.createElement("label");
@@ -16,13 +17,13 @@ function Listing(todo,count)
         ListItem.classList.add("mt-3");
     }
     inputCheckBox.id="input"+todo.uniqueNo;
-    inputCheckBox.classList.add("inputCheckBox");
     lableElement.setAttribute("for","input"+todo.uniqueNo);
     lableElement.textContent=todo.TodoHeading;
     ListItem.appendChild(inputCheckBox);
     ListItem.appendChild(lableElement);
-    
-    unorderedList.appendChild(ListItem);
+    listDiv.classList.add("listDiv");
+    listDiv.appendChild(ListItem);
+    unorderedList.appendChild(listDiv);
 }
 
 for(let item of parsedTodoList)
