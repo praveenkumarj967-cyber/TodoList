@@ -20,3 +20,8 @@
 .listItem{
     list-style-type: none;
 }
+
+.InputCheckBox{
+    border-radius: 50%;
+    cursor: pointer;
+}

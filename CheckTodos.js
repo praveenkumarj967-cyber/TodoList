@@ -16,6 +16,7 @@ function Listing(todo,count)
         ListItem.classList.add("mt-3");
     }
     inputCheckBox.id="input"+todo.uniqueNo;
+    inputCheckBox.classList.add("inputCheckBox");
     lableElement.setAttribute("for","input"+todo.uniqueNo);
     lableElement.textContent=todo.TodoHeading;
     ListItem.appendChild(inputCheckBox);
