@@ -50,3 +50,16 @@ addingContainer.appendChild(CheckButtonDiv);
 CheckTodosButton.onclick=function(){
     window.location.href="CheckTodos.html";
 }
+
+let BackToHomeDiv=document.createElement("div");
+let BackToHome=document.createElement("button");
+BackToHome.classList.add("btn","btn-success");
+BackToHome.textContent="Back To Home";
+BackToHomeDiv.classList.add("BackToHome","mt-4");
+BackToHomeDiv.appendChild(BackToHome);
+addingContainer.appendChild(BackToHomeDiv);
+
+BackToHome.onclick=function()
+{
+    window.location.href="Todo.html";
+}

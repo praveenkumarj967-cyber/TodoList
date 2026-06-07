@@ -59,3 +59,30 @@ for(let item of parsedTodoList)
         count++;
     }
 }
+
+let mainContainer=document.getElementById("MainContainer");
+let TodoButton=document.createElement("button");
+let ButtonsDiv=document.createElement("div");
+ButtonsDiv.classList.add("ButtonsDiv");
+TodoButton.classList.add("btn","btn-primary","ml-5");
+
+TodoButton.textContent="Add Todo";
+ButtonsDiv.appendChild(TodoButton);
+
+mainContainer.appendChild(ButtonsDiv);
+let HomeBtnDiv=document.createElement("div");
+HomeBtnDiv.classList.add("ButtonsDiv");
+let BackToHomeBtn=document.createElement("button");
+BackToHomeBtn.classList.add("btn","btn-info","mt-3");
+BackToHomeBtn.textContent="Back To Home";
+HomeBtnDiv.appendChild(BackToHomeBtn);
+mainContainer.appendChild(HomeBtnDiv);
+
+TodoButton.onclick=function()
+{
+    window.location.href="Tasks.html";
+}
+BackToHomeBtn.onclick=function()
+{
+    window.location.href="Todo.html";
+}
