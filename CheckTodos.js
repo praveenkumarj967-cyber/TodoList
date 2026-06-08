@@ -2,33 +2,44 @@ let todolist=localStorage.getItem("TodoList");
 let parsedTodoList=JSON.parse(todolist);
 let unorderedList=document.getElementById("unorderedList");
 let count=1;
+let mainContainer=document.getElementById("MainContainer");
 function clicking(todo)
 {
     let labelEl=document.getElementById("label"+todo.uniqueNo);
     let inputCheck=document.getElementById("input"+todo.uniqueNo);
+    let DivElement=document.getElementById("listDiv"+todo.uniqueNo);
     if(inputCheck.checked)
     {
         todo.isChecked=true;
         labelEl.classList.add("checked");
+        DivElement.classList.add("AfterCompletionTask");
     }
     else{
         todo.isChecked=false;
         labelEl.classList.remove("checked");
+        DivElement.classList.remove("AfterCompletionTask");
     }
     localStorage.setItem("TodoList",JSON.stringify(parsedTodoList));
 }
 function Listing(todo,count)
 {
+    let combinedDivWithDel=document.createElement("div");
+    let DelContainer=document.createElement("div");
+    let DelIcon=document.createElement("i");
+    DelIcon.classList.add("fa-solid","fa-trash");
     let listDiv=document.createElement("div");
+    DelContainer.classList.add("DelContainer");
     let ListItem=document.createElement("li");
+    DelContainer.appendChild(DelIcon);
     ListItem.id="todo"+todo.uniqueNo;
     let lableElement=document.createElement("label");
     lableElement.classList.add("label");
     lableElement.id="label"+todo.uniqueNo;
     let inputCheckBox=document.createElement("input");
     inputCheckBox.type="checkbox";
-
+    inputCheckBox.style.borderRadius="5px";
     lableElement.classList.add("lable1");
+    lableElement.style.marginLeft="5px";
     ListItem.classList.add("listItem","mr-3");
     if(count>1){
         ListItem.classList.add("mt-3");
@@ -38,12 +49,17 @@ function Listing(todo,count)
     lableElement.textContent=todo.TodoHeading;
     ListItem.appendChild(inputCheckBox);
     ListItem.appendChild(lableElement);
-    listDiv.classList.add("ListDiv");
+    listDiv.id="listDiv"+todo.uniqueNo;
     listDiv.appendChild(ListItem);
-    unorderedList.appendChild(listDiv);
+    combinedDivWithDel.classList.add("ListDiv");
+    combinedDivWithDel.appendChild(listDiv);
+    combinedDivWithDel.appendChild(DelContainer);
+    combinedDivWithDel.classList.add("d-flex","flex-row");
+    unorderedList.appendChild(combinedDivWithDel);
     if(todo.isChecked)
     {
         lableElement.classList.add("checked");
+        listDiv.classList.add("AfterCompletionTask");
         inputCheckBox.checked=true;
     }
     inputCheckBox.onclick=function(){
@@ -60,7 +76,7 @@ for(let item of parsedTodoList)
     }
 }
 
-let mainContainer=document.getElementById("MainContainer");
+
 let TodoButton=document.createElement("button");
 let ButtonsDiv=document.createElement("div");
 ButtonsDiv.classList.add("ButtonsDiv");

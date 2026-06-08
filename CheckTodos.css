@@ -3,6 +3,8 @@
     height:100vh;
     width:100vw;
     background-size:cover;
+    padding:20px;
+    text-align: center;
 }
 
 .label{
@@ -23,7 +25,11 @@
 }
 
 .ListDiv{
-    background-color:lavender;
+    background-color:rgb(173, 173, 234);
+    border-radius: 5px;
+    text-align: center;
+    width:20%;
+    margin-bottom: 10px;
 }
 
 .checked{
@@ -33,4 +39,12 @@
 
 .ButtonsDiv{
     text-align: center;
+}
+
+.AfterCompletionTask{
+    background-color: rgb(151, 201, 244);
+}
+
+.DelContainer{
+    text-align: right;
 }
