@@ -1,5 +1,6 @@
 let todolist=localStorage.getItem("TodoList");
-let parsedTodoList=JSON.parse(todolist);
+let parsedTodoList=[]
+if(todolist!==null)parsedTodoList=JSON.parse(todolist)
 let unorderedList=document.getElementById("unorderedList");
 let count=1;
 let mainContainer=document.getElementById("MainContainer");
@@ -21,9 +22,25 @@ function clicking(todo)
     }
     localStorage.setItem("TodoList",JSON.stringify(parsedTodoList));
 }
+function deleting(todo)
+{
+    
+        let indexValue=parsedTodoList.findIndex(function(eachItem){
+        if(todo.uniqueNo===eachItem.uniqueNo)return true;
+        return false;
+    });
+    if(indexValue!==-1)
+    {
+        parsedTodoList.splice(indexValue,1);
+        localStorage.setItem("TodoList",JSON.stringify(parsedTodoList));
+        let todoElement=document.getElementById("Combined"+todo.uniqueNo);
+        unorderedList.removeChild(todoElement);
+    }
+}
 function Listing(todo,count)
 {
     let combinedDivWithDel=document.createElement("div");
+    combinedDivWithDel.id="Combined"+todo.uniqueNo;
     let DelContainer=document.createElement("div");
     let DelIcon=document.createElement("i");
     DelIcon.classList.add("fa-solid","fa-trash");
@@ -56,6 +73,9 @@ function Listing(todo,count)
     combinedDivWithDel.appendChild(DelContainer);
     combinedDivWithDel.classList.add("d-flex","flex-row");
     unorderedList.appendChild(combinedDivWithDel);
+    DelIcon.addEventListener("click",function(){
+        deleting(todo);
+    });
     if(todo.isChecked)
     {
         lableElement.classList.add("checked");
