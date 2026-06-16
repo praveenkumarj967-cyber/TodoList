@@ -23,6 +23,10 @@ else{
     todoListArray=JSON.parse(todoListArray);
 }
 ButtonElement.onclick=function(){
+    if(inputHeadingEl.value==="")
+    {
+        alert("Enter the heading");
+    }
     let todos={
     uniqueNo:todoListArray.length+1,
     TodoHeading:inputHeadingEl.value,

@@ -8,17 +8,17 @@ function clicking(todo)
 {
     let labelEl=document.getElementById("label"+todo.uniqueNo);
     let inputCheck=document.getElementById("input"+todo.uniqueNo);
-    let DivElement=document.getElementById("listDiv"+todo.uniqueNo);
+    let combinedDivWithDel=document.getElementById("Combined"+todo.uniqueNo);
     if(inputCheck.checked)
     {
         todo.isChecked=true;
         labelEl.classList.add("checked");
-        DivElement.classList.add("AfterCompletionTask");
+        combinedDivWithDel.classList.add("AfterCompletionTask");
     }
     else{
         todo.isChecked=false;
         labelEl.classList.remove("checked");
-        DivElement.classList.remove("AfterCompletionTask");
+        combinedDivWithDel.classList.remove("AfterCompletionTask");
     }
     localStorage.setItem("TodoList",JSON.stringify(parsedTodoList));
 }
@@ -37,17 +37,19 @@ function deleting(todo)
         unorderedList.removeChild(todoElement);
     }
 }
+
 function Listing(todo,count)
 {
     let combinedDivWithDel=document.createElement("div");
     combinedDivWithDel.id="Combined"+todo.uniqueNo;
-    let DelContainer=document.createElement("div");
+    // let DelContainer=document.createElement("div");
     let DelIcon=document.createElement("i");
     DelIcon.classList.add("fa-solid","fa-trash");
     let listDiv=document.createElement("div");
-    DelContainer.classList.add("DelContainer");
+    // DelContainer.classList.add("DelContainer");
     let ListItem=document.createElement("li");
-    DelContainer.appendChild(DelIcon);
+    // DelContainer.appendChild(DelIcon);
+    
     ListItem.id="todo"+todo.uniqueNo;
     let lableElement=document.createElement("label");
     lableElement.classList.add("label");
@@ -62,7 +64,7 @@ function Listing(todo,count)
         ListItem.classList.add("mt-3");
     }
     inputCheckBox.id="input"+todo.uniqueNo;
-    lableElement.setAttribute("for","input"+todo.uniqueNo);
+    // lableElement.setAttribute("for","input"+todo.uniqueNo);
     lableElement.textContent=todo.TodoHeading;
     ListItem.appendChild(inputCheckBox);
     ListItem.appendChild(lableElement);
@@ -70,8 +72,10 @@ function Listing(todo,count)
     listDiv.appendChild(ListItem);
     combinedDivWithDel.classList.add("ListDiv");
     combinedDivWithDel.appendChild(listDiv);
-    combinedDivWithDel.appendChild(DelContainer);
-    combinedDivWithDel.classList.add("d-flex","flex-row");
+    // combinedDivWithDel.appendChild(DelContainer);
+    combinedDivWithDel.appendChild(DelIcon);
+    combinedDivWithDel.classList.add("d-flex","flex-row","DelContainer");
+    combinedDivWithDel.classList.add("justify-content-between","align-items-center");
     unorderedList.appendChild(combinedDivWithDel);
     DelIcon.addEventListener("click",function(){
         deleting(todo);
@@ -79,12 +83,15 @@ function Listing(todo,count)
     if(todo.isChecked)
     {
         lableElement.classList.add("checked");
-        listDiv.classList.add("AfterCompletionTask");
+        combinedDivWithDel.classList.add("AfterCompletionTask");
         inputCheckBox.checked=true;
     }
     inputCheckBox.onclick=function(){
         clicking(todo);
     };
+    lableElement.addEventListener("click", function() {
+        window.location.href = "MoreTasks.html?id=" + lableElement.id;
+    });
 }
 
 for(let item of parsedTodoList)

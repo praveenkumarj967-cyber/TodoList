@@ -1,0 +1,19 @@
+.backgroundStyle{
+    background-image: url("https://images.unsplash.com/photo-1712000155290-ee65c0a82eda?fm=jpg&q=100&w=5000&auto=format&fit=crop");
+    background-size: cover;
+    height:100vh;
+    width:100vw;
+    padding:20px;
+}
+
+.heading{
+    color:cornflowerblue;
+    font-family: "Caveat";
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.para{
+    color:navy;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
