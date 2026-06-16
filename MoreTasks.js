@@ -15,5 +15,9 @@ headingEl.classList.add("heading");
 let ParaEl=document.createElement("p");
 ParaEl.textContent=parsedTodoList[index].TodoItems;
 ParaEl.classList.add("para");
+if(parsedTodoList[index].isChecked){
+    headingEl.classList.add("completedTask");
+    ParaEl.classList.add("completedTask");
+}
 MainContainer.appendChild(headingEl);
 MainContainer.appendChild(ParaEl);

@@ -17,3 +17,7 @@
     color:navy;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.completedTask{
+    text-decoration: line-through;
+}
